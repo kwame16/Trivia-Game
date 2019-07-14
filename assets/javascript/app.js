@@ -3,13 +3,18 @@
 // * The player will have a limited amount of time to finish the quiz. 
 var timerButton;
 
-var windowTimeout = setTimeout(function(){
-    alert("The time limit has been reached. Let's see how you did.")
-},2000);
+// var windowTimeout = setTimeout(function(){
+//     alert("The time limit has been reached. Let's see how you did.")
+// },2000);
 
 $("#true").on("click", function(){
     timerButton = setTimeout(function(){
-        alert("The time limit has been reached. Let's see how you did1.")},4000);
+        alert("The time limit has been reached. Let's see how you did1.")},30000);
+});
+
+$("#false").on("click", function(){
+    timerButton = setTimeout(function(){
+        alert("The time limit has been reached. Let's see how you did1.")},30000);
 });
 //   * The game ends when the time runs out. The page will reveal the number of questions 
 //     that players answer correctly and incorrectly.

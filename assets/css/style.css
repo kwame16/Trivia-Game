@@ -1,24 +1,32 @@
 .container{
-    background: green
+    background: blue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 960px;
 }
 
 .directions-box{
     align-content: center;
     background: blue;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 h1{
     color: white;
+    text-align: center;
 }
 
 p{
     color: white;
     font-size: 16px;
+    text-align: center;
 }
 
 header{
     color: black;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border: 4px dashed orange;
+    margin: 2% 20% 2% 20%;
 }
 
 .questions-box{
@@ -28,15 +36,18 @@ header{
 
 button{
 background: lightgray;
-color: black
+font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #true{
     color: orange;
+    margin-left: 40%;
 }
 
 #false{
     color: red;
 }
 
-
+body{
+    background: grey;
+}
