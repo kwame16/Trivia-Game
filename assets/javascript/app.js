@@ -1,29 +1,95 @@
-// You'll create a trivia form with multiple choice or true/false options (your choice).
+    // This code will run as soon as the page loads
+window.onload = function() {
+    $("#true").on("click", start);
+    $("#false").on("click", start);
+  };
+  
+  //  Variable that will hold our setInterval that runs the stopwatch
+  var intervalId;
+  
+  // prevents the clock from being sped up unnecessarily
+  var clockRunning = false;
+  var time = 60;
+  var lap = 1;
+  
 
-// * The player will have a limited amount of time to finish the quiz. 
-var timerButton;
+  function start() {
+  
+    // DONE: Use setInterval to start the count here and set the clock to running.
+    if (!clockRunning) {
+      intervalId = setInterval(count, 1000);
+      clockRunning = true;
+    }
+  }
+  function stop() {
+  
+    // DONE: Use clearInterval to stop the count here and set the clock to not be running.
+    clearInterval(intervalId);
+    clockRunning = false;
+  }
 
-// var windowTimeout = setTimeout(function(){
-//     alert("The time limit has been reached. Let's see how you did.")
-// },2000);
+  function count() {
+  
+    // decrease time by 1,
+    time--;
+  
+    // grabs current time, pass that into the timeConverter function,
+    // and save the result into variable converted.
+    var converted = timeConverter(time);
+  
+    //Use the variable we just created to show the converted time in the "display" div.
+    $("#display").text(converted);
+  }
+  function timeConverter(t) {
+  
+    var minutes = Math.floor(t / 60);
+    var seconds = t - (minutes * 60);
+  
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+  
+    if (minutes === 0) {
+      minutes = "0";
+    }
+    if (time == 0) {
+        window.location.href = "score.html";
+      }
+    else if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+  
+    return minutes + ":" + seconds;
 
-$("#true").on("click", function(){
-    timerButton = setTimeout(function(){
-        alert("The time limit has been reached. Let's see how you did1.")},30000);
-});
+  }
 
-$("#false").on("click", function(){
-    timerButton = setTimeout(function(){
-        alert("The time limit has been reached. Let's see how you did1.")},30000);
-});
-//   * The game ends when the time runs out. The page will reveal the number of questions 
-//     that players answer correctly and incorrectly.
+function scorePage(){
+    console.log("went through scorePage");
+    
+    // clearInterval(interval);
 
-// * Don't let the player pick more than one answer per question.
+let grade = Math.round((right / 6)* 100);
 
-// * Don't forget to include a countdown timer. //  Start on click.
-    //   $("#start").on("click", function() {
-    //     //  Set the button alert's timeout to run three seconds after the function's called.
-    //     delayButtonAlert = setTimeout(function() {
-    //       alert("Alert #2: Called 3 seconds after the start button is clicked.")},3000);
-    //   });
+promptDisplay.text("Test Complete Let's See Your Score!");
+answerDisplay.text("");
+answerDisplay.append("Your Score Is " + grade + "%");
+
+if (grade === 0){
+    answerDisplay.append("Please do not touch a kitchen just order out!");
+} else if (grade === 60){
+    answerDisplay.append("Please Stick to Pancakes, Burgers, & Cereal!");
+} else if (grade === 83){
+    answerDisplay.append("I Like your Flavor Chef!");
+} else if (grade === 100){
+    answerDisplay.append("Executive Chef Status")
+}
+
+// Restarting the Variables
+questionCount = 0;
+questionRight = 0;
+questionWrong = 0;
+grade = 0;
+
+
+
+}
