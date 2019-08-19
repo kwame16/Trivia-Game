@@ -63,3 +63,33 @@ window.onload = function() {
 
   }
 
+function scorePage(){
+    console.log("went through scorePage");
+    
+    // clearInterval(interval);
+
+let grade = Math.round((right / 6)* 100);
+
+promptDisplay.text("Test Complete Let's See Your Score!");
+answerDisplay.text("");
+answerDisplay.append("Your Score Is " + grade + "%");
+
+if (grade === 0){
+    answerDisplay.append("Please do not touch a kitchen just order out!");
+} else if (grade === 60){
+    answerDisplay.append("Please Stick to Pancakes, Burgers, & Cereal!");
+} else if (grade === 83){
+    answerDisplay.append("I Like your Flavor Chef!");
+} else if (grade === 100){
+    answerDisplay.append("Executive Chef Status")
+}
+
+// Restarting the Variables
+questionCount = 0;
+questionRight = 0;
+questionWrong = 0;
+grade = 0;
+
+
+
+}
