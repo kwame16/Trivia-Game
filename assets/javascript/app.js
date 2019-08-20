@@ -15,7 +15,7 @@ var intervalId;
 
 // prevents the clock from being sped up unnecessarily
 var clockRunning = false;
-var time = 5;
+var time = 10;
 var lap = 1;
 
 function start() {
