@@ -1,10 +1,13 @@
 //   TIMER THAT WILL BE LOADED AND READY WHEN THE PAGE IS AND WILL START ON
 // CLICK OF FIRST BUTTON CLICKED...
 
+
+
 // This code will run as soon as the page loads
 window.onload = function() {
   $("#true").on("click", start);
   $("#false").on("click", start);
+  scorePage();
 };
 
 //  Variable that will hold our setInterval that runs the stopwatch
@@ -12,10 +15,12 @@ var intervalId;
 
 // prevents the clock from being sped up unnecessarily
 var clockRunning = false;
-var time = 10;
+var time = 5;
 var lap = 1;
 
 function start() {
+    // localStorage.removeItem("right")
+    // localStorage.removeItem("wrong")
   // DONE: Use setInterval to start the count here and set the clock to running.
   if (!clockRunning) {
     intervalId = setInterval(count, 1000);
@@ -52,6 +57,10 @@ function timeConverter(t) {
     minutes = "";
   }
   if (time == 0) {
+    localStorage.setItem("right", right)
+    localStorage.setItem("wrong", wrong)
+      console.log(wrong);
+      console.log(right);
     window.location.href = "score.html";
   } else if (minutes < 10) {
     minutes = "0" + minutes;
@@ -99,27 +108,33 @@ var unanswered = 0;
 
 function scorePage() {
   console.log("went through scorePage");
+  
+
+  $("#questionRight").append(localStorage.getItem("right"));
+  $("#questionWrong").append(localStorage.getItem("wrong"));
+
+
 
   // clearInterval(interval);
 
-  let grade = Math.round((right / 6) * 100);
+//   let grade = Math.round((right / 6) * 100);
 
-  let answerDisplay = $("#scoreboard");
+//   let answerDisplay = $("#scoreboard");
 
-  promptDisplay.text("Test Complete Let's See Your Score!");
-  answerDisplay.text("");
-  answerDisplay.append("Your Score Is " + grade + "%");
-  console.log("this is score consolelog");
+//   promptDisplay.text("Test Complete Let's See Your Score!");
+//   answerDisplay.text("");
+//   answerDisplay.append("Your Score Is " + grade + "%");
+//   console.log("this is score consolelog");
 
-  if (grade === 0) {
-    answerDisplay.append("Please do not touch a kitchen just order out!");
-  } else if (grade === 60) {
-    answerDisplay.append("Please Stick to Pancakes, Burgers, & Cereal!");
-  } else if (grade === 83) {
-    answerDisplay.append("I Like your Flavor Chef!");
-  } else if (grade === 100) {
-    answerDisplay.append("Executive Chef Status");
-  }
+//   if (grade === 0) {
+//     answerDisplay.append("Please do not touch a kitchen just order out!");
+//   } else if (grade === 60) {
+//     answerDisplay.append("Please Stick to Pancakes, Burgers, & Cereal!");
+//   } else if (grade === 83) {
+//     answerDisplay.append("I Like your Flavor Chef!");
+//   } else if (grade === 100) {
+//     answerDisplay.append("Executive Chef Status");
+//   }
 
   // Restarting the Variables
   questionCount = 0;
@@ -132,28 +147,25 @@ $("button").on("click", function() {
   let alreadyAnswered = $(this).attr("data-alreadyAnswered");
   let questionNum = $(this).attr("data-question");
   let userClick = $(this).attr("data-button");
-  alert(userClick);
-  alert(userClick === test[0].answer);
 
   if (alreadyAnswered === "no") {
     if (questionNum === "1") {
       if (userClick === test[0].answer) {
         right++;
-        alert(`YOu got it correct!`);
+        
       } else {
         wrong++;
-        alert(`You got it incorrect!`);
+        
       }
       questionCount++;
       $(`.${questionNum}`).attr("data-alreadyAnswered", "yes")
     } else if (questionNum === "2") {
       if (userClick === test[1].answer) {
         right++;
-        alert(right);
-        alert(`YOu got it correct!`);
+        
       } else {
         wrong++;
-        alert(`You got it incorrect!`);
+        
       }
       questionCount++;
       $(`.${questionNum}`).attr("data-alreadyAnswered", "yes")
@@ -161,40 +173,40 @@ $("button").on("click", function() {
     } else if (questionNum === "3") {
       if (userClick === test[2].answer) {
         right++;
-        alert(`YOu got it correct!`);
+        
       } else {
         wrong++;
-        alert(`You got it incorrect!`);
+        
       }
       questionCount++;
       $(`.${questionNum}`).attr("data-alreadyAnswered", "yes")
     } else if (questionNum === "4") {
       if (userClick === test[3].answer) {
         right++;
-        alert(`YOu got it correct!`);
+        
       } else {
         wrong++;
-        alert(`You got it incorrect!`);
+        
       }
       questionCount++;
       $(`.${questionNum}`).attr("data-alreadyAnswered", "yes")
     } else if (questionNum === "5") {
       if (userClick === test[4].answer) {
         right++;
-        alert(`YOu got it correct!`);
+        
       } else {
         wrong++;
-        alert(`You got it incorrect!`);
+        
       }
       questionCount++;
       $(`.${questionNum}`).attr("data-alreadyAnswered", "yes")
     } else if (questionNum === "6") {
       if (userClick === test[5].answer) {
         right++;
-        alert(`YOu got it correct!`);
+        
       } else {
         wrong++;
-        alert(`You got it incorrect!`);
+        
       }
       questionCount++;
       $(`.${questionNum}`).attr("data-alreadyAnswered", "yes")
@@ -202,6 +214,6 @@ $("button").on("click", function() {
     }
     // $(this).attr("data-alreadyAnswered","yes");
   } else {
-    alert("you already picked this answer");
+    alert("You already picked this answer");
   }
 });
