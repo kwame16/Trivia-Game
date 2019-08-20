@@ -14,19 +14,17 @@ h1{
     color: white;
     text-align: center;
 }
-
-p{
-    color: white;
-    font-size: 16px;
-    text-align: center;
-}
-
 header{
     color: black;
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border: 4px dashed orange;
     margin: 2% 20% 2% 20%;
+}
+p{
+    color: white;
+    font-size: 16px;
+    text-align: center;
 }
 
 .questions-box{
@@ -51,3 +49,4 @@ font-family: Georgia, 'Times New Roman', Times, serif;
 body{
     background: grey;
 }
+
