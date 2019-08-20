@@ -12,7 +12,7 @@ var intervalId;
 
 // prevents the clock from being sped up unnecessarily
 var clockRunning = false;
-var time = 60;
+var time = 10;
 var lap = 1;
 
 function start() {
@@ -20,6 +20,7 @@ function start() {
   if (!clockRunning) {
     intervalId = setInterval(count, 1000);
     clockRunning = true;
+    console.log("start of timer");
   }
 }
 function stop() {
@@ -48,7 +49,7 @@ function timeConverter(t) {
   }
 
   if (minutes === 0) {
-    minutes = "0";
+    minutes = "";
   }
   if (time == 0) {
     window.location.href = "score.html";
@@ -56,11 +57,45 @@ function timeConverter(t) {
     minutes = "0" + minutes;
   }
 
-  return minutes + ":" + seconds;
+  return seconds;
 }
 // END OF TIMER SECTION!!!!!
 
 // START OF RESULTS PAGE!!!!!!!!!!!!!!!
+
+var test = [
+  {
+    question: "There are 28 cups in 1 Gallon.",
+    answer: "true"
+  },
+  {
+    question: "There are two 1/3cups in 1 cup.",
+    answer: "true"
+  },
+  {
+    question: "There are 3 liters in 1 Gallon.",
+    answer: "false"
+  },
+  {
+    question: "Water boils at 100 degrees.",
+    answer: "false"
+  },
+  {
+    question:
+      "The difference between sauteing and pan-frying is that sauteing uses more fat(f).",
+    answer: "false"
+  },
+  {
+    question: "There are 8 tablespoons in 1/2 cup(t).",
+    answer: "true"
+  }
+];
+
+//count variables
+var questionCount = 0;
+var right = 0;
+var wrong = 0;
+var unanswered = 0;
 
 function scorePage() {
   console.log("went through scorePage");
@@ -69,9 +104,12 @@ function scorePage() {
 
   let grade = Math.round((right / 6) * 100);
 
+  let answerDisplay = $("#scoreboard");
+
   promptDisplay.text("Test Complete Let's See Your Score!");
   answerDisplay.text("");
   answerDisplay.append("Your Score Is " + grade + "%");
+  console.log("this is score consolelog");
 
   if (grade === 0) {
     answerDisplay.append("Please do not touch a kitchen just order out!");
@@ -90,81 +128,80 @@ function scorePage() {
   grade = 0;
 }
 
-var test = [
-  {
-    question: "There are 28 cups in 1 Gallon.",
-    choices: [true, false],
-    answer: true
-  },
-  {
-    question: "There are two 1/3cups in 1 cup.",
-    choices: [true, false],
-    answer: true
-  },
-  {
-    question: "There are 3 liters in 1 Gallon.",
-    choices: [true, false],
-    answer: false
-  },
-  {
-    question: "Water boils at 100 degrees.",
-    choices: [true, false],
-    answer: false
-  },
-  {
-    question:
-      "The difference between sauteing and pan-frying is that sauteing uses more fat(f).",
-      choices: [true, false],
-      answer: false
-  },
-  {
-    question: "There are 8 tablespoons in 1/2 cup(t).",
-    choices: [true, false],
-    answer: true
-  }
-];
+$("button").on("click", function() {
+  let alreadyAnswered = $(this).attr("data-alreadyAnswered");
+  let questionNum = $(this).attr("data-question");
+  let userClick = $(this).attr("data-button");
+  alert(userClick);
+  alert(userClick === test[0].answer);
 
-function questions() {
-  console.log("We Made it to here");
+  if (alreadyAnswered === "no") {
+    if (questionNum === "1") {
+      if (userClick === test[0].answer) {
+        right++;
+        alert(`YOu got it correct!`);
+      } else {
+        wrong++;
+        alert(`You got it incorrect!`);
+      }
+      questionCount++;
+      $(`.${questionNum}`).attr("data-alreadyAnswered", "yes")
+    } else if (questionNum === "2") {
+      if (userClick === test[1].answer) {
+        right++;
+        alert(right);
+        alert(`YOu got it correct!`);
+      } else {
+        wrong++;
+        alert(`You got it incorrect!`);
+      }
+      questionCount++;
+      $(`.${questionNum}`).attr("data-alreadyAnswered", "yes")
 
-  if (questionCount < test.length) {
-    // restarts the variables
-    answerCorrect = "";
-    answerIncorrect = "";
+    } else if (questionNum === "3") {
+      if (userClick === test[2].answer) {
+        right++;
+        alert(`YOu got it correct!`);
+      } else {
+        wrong++;
+        alert(`You got it incorrect!`);
+      }
+      questionCount++;
+      $(`.${questionNum}`).attr("data-alreadyAnswered", "yes")
+    } else if (questionNum === "4") {
+      if (userClick === test[3].answer) {
+        right++;
+        alert(`YOu got it correct!`);
+      } else {
+        wrong++;
+        alert(`You got it incorrect!`);
+      }
+      questionCount++;
+      $(`.${questionNum}`).attr("data-alreadyAnswered", "yes")
+    } else if (questionNum === "5") {
+      if (userClick === test[4].answer) {
+        right++;
+        alert(`YOu got it correct!`);
+      } else {
+        wrong++;
+        alert(`You got it incorrect!`);
+      }
+      questionCount++;
+      $(`.${questionNum}`).attr("data-alreadyAnswered", "yes")
+    } else if (questionNum === "6") {
+      if (userClick === test[5].answer) {
+        right++;
+        alert(`YOu got it correct!`);
+      } else {
+        wrong++;
+        alert(`You got it incorrect!`);
+      }
+      questionCount++;
+      $(`.${questionNum}`).attr("data-alreadyAnswered", "yes")
 
-    // shows the answer page if you select the wrong answer
-    if (test[questionCount].answer == test[questionCount].choices[0]) {
-      console.log("it made it to testing");
-
-      $("#answer0").on("click", rightAnswer);
-      $("#answer1").on("click", wrongAnswer);
-    } else if (test[questionCount].answer == test[questionCount].choices[1]) {
-      console.log("it made it to testing 1");
-
-      $("#answer0").on("click", rightAnswer);
-      $("#answer1").on("click", wrongAnswer);
-    } else if (test[questionCount].answer == test[questionCount].choices[2]) {
-      console.log("it made it to testing 2");
-
-      $("#answer0").on("click", rightAnswer);
-      $("#answer1").on("click", wrongAnswer);
-    } else if (test[questionCount].answer == test[questionCount].choices[3]) {
-      console.log("it made it to testing 3");
-
-      $("#answer0").on("click", rightAnswer);
-      $("#answer1").on("click", wrongAnswer);
-    } else if (test[questionCount].answer == test[questionCount].choices[4]) {
-      console.log("it made it to testing 4");
-
-      $("#answer0").on("click", rightAnswer);
-      $("#answer1").on("click", wrongAnswer);
-    } else if (test[questionCount].answer == test[questionCount].choices[5]) {
-      console.log("it made it to testing 5");
-
-      $("#answer0").on("click", rightAnswer);
-      $("#answer1").on("click", wrongAnswer);
     }
+    // $(this).attr("data-alreadyAnswered","yes");
   } else {
-    countPage();
+    alert("you already picked this answer");
   }
-}
+});
