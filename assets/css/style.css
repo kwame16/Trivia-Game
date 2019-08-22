@@ -1,52 +1,63 @@
-.container{
-    background: blue;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    width: 960px;
-}
-
-.directions-box{
+body {
+    background-image: url("../images/cooking\ tools.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
     align-content: center;
-    background: blue;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
 }
 
-h1{
-    color: white;
+.directions-box, .container2 {
+    /* font-size: 24px; */
     text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    background: rgb(1, 1, 1,.2);
 }
-header{
-    color: black;
+
+#display{
+    font-size: 64px;
+    color: orange;
+    margin-left: 35%;
+    margin-top: 15%;
+}
+
+header {
+    color: white;
+    background: rgb(1, 1, 1,.46);
+    font-size: 18px;
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border: 4px dashed orange;
-    margin: 2% 20% 2% 20%;
-}
-p{
-    color: white;
-    font-size: 16px;
-    text-align: center;
+    margin: 2% 20% 2% 30%;
 }
 
-.questions-box{
-    background: lightgoldenrodyellow;
+.questions-box {
+    /* background: lightgoldenrodyellow; */
+    /* background-image: url("../images/Nelson-Woodshop-Pac-Man-Board.jpg"); */
     padding: 2%;
+    color: white;
+    background: rgb(1, 1, 1,.2);
 }
 
-button{
-background: lightgray;
-font-family: Georgia, 'Times New Roman', Times, serif;
+button {
+    background: lightgray;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* margin-left: 15%; */
 }
 
-#true  {
+#true {
     color: orange;
-    margin-left: 40%;
+    margin-left: 48%;
 }
 
-#false{
+#false {
     color: red;
 }
 
-body{
-    background: grey;
+#scoreboard{
+    color: white;
+    background: rgb(1, 1, 1,.4);
+    /* opacity: .6; */
+    text-align: center;
 }
-
