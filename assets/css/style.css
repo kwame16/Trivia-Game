@@ -1,6 +1,6 @@
 body {
     background-image: url("../images/cooking\ tools.jpg");
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-position: center;
     align-content: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
